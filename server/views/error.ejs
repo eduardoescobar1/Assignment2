@@ -1,0 +1,21 @@
+<!--
+Centennial College
+Date:10/01/2021  
+Eduardo Escobar #301081088
+COMP:229 SEC:15
+PROFESSOR: Aderson Oliveira
+-->
+ 
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+<div class="container">
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+</div>
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>

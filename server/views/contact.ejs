@@ -1,0 +1,56 @@
+<!--
+Centennial College
+Date:10/01/2021  
+Eduardo Escobar #301081088
+COMP:229 SEC:15
+PROFESSOR: Aderson Oliveira
+-->
+ 
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+
+
+<main class="container mt-5">
+  <div class="jumbotron">
+   
+    <h1 class="display-4 text-center" > <%= title %> Me </h1>
+    <br>
+    <hr>
+<form class="row g-3">
+  <div class="col-md-7">
+    <label for="firstName" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="firstName" required>
+  </div>
+
+  <div class="col-md-7">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lastName" required>
+  </div>
+
+  <div class="col-md-7">
+    <label for="emailInfo" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" required >
+  </div>
+
+  <div class="col-md-7">
+    <label for="contactNumber" class="form-label">Contact Number</label>
+    <input type="text" class="form-control" id="phone" required placeholder="+1 (xxx) xxx-xxxx">
+  </div>
+
+  <div class="col-md-12">
+    <label for="comments" class="form-label">Comments</label>
+    <textarea class="form-control" id="comments" cols="3"></textarea>
+  </div>
+
+  <div class="col-md-12 text-center" style="padding-top: 20px">
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </div>
+</form>
+</div>
+</main>
+
+
+<%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>
