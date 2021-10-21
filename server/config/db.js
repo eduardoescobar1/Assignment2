@@ -9,5 +9,8 @@ PROFESSOR: Aderson Oliveira
 
 module.exports =
 {
-    "URI" : "mongodb://localhost/contact"
+    //Local Host
+    /*"URI" : "mongodb://localhost/contact"*/
+
+    "URI" : "mongodb+srv://lad926wux:Simba0416@@cluster0.borkb.mongodb.net/contact_list?retryWrites=true&w=majority"
 }

@@ -17,23 +17,25 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('../views/index', {title: 'Home'});
+    res.render('../views/index', {title: 'Home', displayName: req.user ? req.user.displayName: ''}); 
+//Display name, if the user exist then request user wa want to send the display name or nothing
 }
 
+
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('../views/about', {title: 'About'});
+    res.render('../views/about', {title: 'About', displayName: req.user ? req.user.displayName: ''});
 }
 
 module.exports.displayProductsPage = (req, res, next) => {
-    res.render('../views/projects', {title: 'Projects'});
+    res.render('../views/projects', {title: 'Projects', displayName: req.user ? req.user.displayName: ''});
 }
 
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('../views/services', {title: 'Services'});
+    res.render('../views/services', {title: 'Services', displayName: req.user ? req.user.displayName: ''});
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('../views/contact', {title: 'Contact'});
+    res.render('../views/contact', {title: 'Contact', displayName: req.user ? req.user.displayName: ''});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
