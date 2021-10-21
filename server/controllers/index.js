@@ -12,13 +12,17 @@ let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
 
+//enable jwt
+let jwt = require('jsonwebtoken');
+let DB = require('../config/db');
+
 //create user model instance
 let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req, res, next) => {
     res.render('../views/index', {title: 'Home', displayName: req.user ? req.user.displayName: ''}); 
-//Display name, if the user exist then request user wa want to send the display name or nothing
+//Display name, if the user exist then request user... want to send the display name or nothing
 }
 
 
@@ -39,7 +43,7 @@ module.exports.displayContactPage = (req, res, next) => {
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
-    // check if user is not already loged in
+    // check if user is not already logged in
     if (!req.user) {
         res.render('auth/login', {
             title: "Login",
@@ -70,14 +74,35 @@ module.exports.processLoginPage = (req, res, next) => {
             if(err) {
                 return next(err);
             }
+
+            const payload = {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }
+
+            const authToken = jwt.sign(payload, DB.Secret,{
+                expiresIn: 604800 //expires in 1 week
+            })
+
+            /*
+            res.json({success: true, msg: 'User Logged in Successfully!', user: {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }, token: authToken})
+            ;*/
+
             return res.redirect('contact-list');
-        });
+        })
         
     })(req, res, next);
 }
 
 module.exports.displayRegisterPage = (req, res, next) => {
-    // check if user is not already loged in
+    // check if user is not already logged in
     if (!req.user) {
         res.render('auth/register', {
             title: "Register",
@@ -116,6 +141,10 @@ module.exports.processRegisterPage = (req, res, next) => {
 
             // redirect the user and authenticate
 
+            /*
+            res.json({success:true, msg: 'User Registered Successfully!'}
+            )
+*/
             return passport.authenticate('local')(req, res, () => {
                 res.redirect('/contact-list');
             })

@@ -11,6 +11,8 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
+let jwt = require('jsonwebtoken')
+
 let Contact = require('../models/contact');
 
 module.exports.displayContactList = (req, res, next) =>{

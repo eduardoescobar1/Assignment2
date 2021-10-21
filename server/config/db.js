@@ -12,5 +12,6 @@ module.exports =
     //Local Host
     /*"URI" : "mongodb://localhost/contact"*/
 
-    "URI" : "mongodb+srv://lad926wux:Simba0416@@cluster0.borkb.mongodb.net/contact_list?retryWrites=true&w=majority"
+    "URI" : "mongodb+srv://lad926wux:Simba0416@@cluster0.borkb.mongodb.net/contact_list?retryWrites=true&w=majority",
+    "Secret": 'SomeSecret'
 }
